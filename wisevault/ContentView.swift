@@ -499,7 +499,7 @@ struct ContentView: View {
                     Label("Insights", systemImage: "chart.line.uptrend.xyaxis")
                 }
                 .tag(1)
-        }
+    }
     }
 }
 
