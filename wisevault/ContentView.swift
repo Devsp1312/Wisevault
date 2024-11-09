@@ -579,9 +579,9 @@ struct BudgetSettingsSheet: View {
                             .foregroundColor(.secondary)
                     }
                     
-                    Link("Privacy Policy", destination: URL(string: "https://yourapp.com/privacy")!)
+                    Link("Privacy Policy", destination: URL(string: "https://www.termsfeed.com/live/91c321b7-5208-4b87-910b-329384b5f3e1")!)
                     
-                    Link("Terms of Service", destination: URL(string: "https://yourapp.com/terms")!)
+                    Link("Terms of Service", destination: URL(string: "https://www.termsfeed.com/live/91c321b7-5208-4b87-910b-329384b5f3e1")!)
                 }
             }
             .navigationTitle("Settings")
@@ -609,11 +609,13 @@ struct BudgetSectionView: View {
     @State private var showingSettings = false
     
     var spendingProgress: Double {
-        min(budget.spent / budget.monthlyLimit, 1.0)
+        guard budget.monthlyLimit > 0 else { return 0 }
+        return min(max(budget.spent / budget.monthlyLimit, 0), 1.0)
     }
     
     var savingsProgress: Double {
-        min(budget.savedAmount / budget.savingsGoal, 1.0)
+        guard budget.savingsGoal > 0 else { return 0 }
+        return min(max(budget.savedAmount / budget.savingsGoal, 0), 1.0)
     }
     
     var body: some View {
