@@ -684,13 +684,11 @@ struct BudgetSectionView: View {
         .shadow(radius: 2)
     }
 }
-
 // First, create a class to share data between views
 class SharedData: ObservableObject {
     @Published var bills: [Bill] = []
     @Published var transactions: [Transaction] = []
 }
-
 // Create new ContentView with TabView
 struct ContentView: View {
     @StateObject private var sharedData = SharedData()
@@ -720,7 +718,6 @@ struct ContentView: View {
         }
     }
 }
-
 #Preview {
     ContentView()
 }
